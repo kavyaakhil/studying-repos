@@ -22,6 +22,21 @@ function depthFirstRecursive($arr, $start) {
     }
 }
 
+// breadth first iterative way
+function breadthFirst($arr, $start) {
+    $queue = [$start];
+    
+    while(count($queue) > 0) {
+        $current = array_shift($queue);
+        echo $current;
+        
+        foreach ($arr[$current] as $neighbour) {
+            array_push($queue, $neighbour);
+        }
+    }
+    
+}
+
 $graph = [
     'a' => ['b', 'c'],
     'b' => ['d'],
@@ -34,4 +49,6 @@ $graph = [
 depthFirst($graph, 'a');
 echo "<br>";
 depthFirstRecursive($graph, 'a');
+echo "<br>";
+breadthFirst($graph, 'a');
 ?>
